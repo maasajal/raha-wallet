@@ -12,9 +12,12 @@ import {
   Button,
 } from "@mui/material";
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
+import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
+  const { signUp } = useAuth();
   const [role, setRole] = useState("");
   const {
     register,
@@ -27,16 +30,16 @@ const SignUp = () => {
       status: "reviewing",
     },
   });
-  const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const res = await axiosPublic.post("/users", data);
+      const res = await signUp(data);
+      // const res = await axiosPublic.post("/signup", data);
       console.log("Post sign up data", res);
-      if (res?.data.insertedId) {
-        reset();
-      }
+      // if (res?.data.insertedId) {
+      //   reset();
+      // }
     } catch (error) {
       console.error("Error posting signup data", error);
     }
@@ -50,13 +53,11 @@ const SignUp = () => {
   return (
     <div>
       <div className="text-center space-y-5">
-        <a href="/">
-          <img
-            src={rahaWalletLogo}
-            className="logo mx-auto w-40 sm:w-60 mt-5"
-            alt="Raha Wallet logo"
-          />
-        </a>
+        <img
+          src={rahaWalletLogo}
+          className="logo mx-auto w-40 sm:w-60 mt-5"
+          alt="Raha Wallet logo"
+        />
         <h1 className="text-2xl font-bold font-Montserrat">
           Sign Up to Raha Wallet!
         </h1>
@@ -163,8 +164,6 @@ const SignUp = () => {
               {errors.role ? errors.role.message : ""}
             </FormHelperText>
           </FormControl>
-          {/* Hidden input field for status */}
-          <input type="hidden" {...register("status")} />
           <Button
             type="submit"
             variant="contained"
