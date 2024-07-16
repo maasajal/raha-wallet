@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
   Box,
@@ -13,12 +13,11 @@ import {
 } from "@mui/material";
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
-  const axiosPublic = useAxiosPublic();
   const { signUp } = useAuth();
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,11 +34,7 @@ const SignUp = () => {
     console.log(data);
     try {
       const res = await signUp(data);
-      // const res = await axiosPublic.post("/signup", data);
-      console.log("Post sign up data", res);
-      // if (res?.data.insertedId) {
-      //   reset();
-      // }
+      navigate("/");
     } catch (error) {
       console.error("Error posting signup data", error);
     }
