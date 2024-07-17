@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { Box, TextField, Button, Typography, Alert } from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const CashIn = () => {
   const { token } = useAuth(); // Assuming useAuth hook provides the token
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,6 +32,9 @@ const CashIn = () => {
         }
       );
       setMessage(response.data);
+      if (response.data) {
+        navigate("/profile");
+      }
     } catch (error) {
       setMessage(error.response?.data || "Error during cash-in");
     }
