@@ -12,6 +12,7 @@ import CashIn from "../pages/Users/CashIn/CashIn";
 import TransactionHistory from "../pages/shared/TransactionHistory/TransactionHistory";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import AgentRoute from "./AgentRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,7 +60,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/transaction-management",
-        element: <TransactionManagement />,
+        element: (
+          <AgentRoute>
+            <TransactionManagement />
+          </AgentRoute>
+        ),
       },
       {
         path: "/transactions",
