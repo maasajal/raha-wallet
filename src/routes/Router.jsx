@@ -8,6 +8,7 @@ import RequestToOpenAccount from "../pages/Admin/RequestToOpenAccount";
 import SendMoney from "../pages/Users/SendMoney/SendMoney";
 import CashOut from "../pages/Users/CashOut/CashOut";
 import TransactionManagement from "../pages/Agents/TransactionManagement/TransactionManagement";
+import CashIn from "../pages/Users/CashIn/CashIn";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/cash-out",
         element: <CashOut />,
+      },
+      {
+        path: "/cash-in",
+        element: <CashIn />,
       },
       {
         path: "/transaction-management",

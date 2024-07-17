@@ -54,6 +54,24 @@ const TransactionManagement = () => {
     }
   };
 
+  const approveCashIn = async (transactionId) => {
+    try {
+      const response = await axiosSecure.post(
+        `/approve-cash-in/${transactionId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMessage(response.data);
+      refetch();
+    } catch (error) {
+      console.error("Error approving cash-in:", error);
+      setMessage("Error approving cash-in");
+    }
+  };
   return (
     <div className="text-center py-10">
       <Typography variant="h4" component="h1">
@@ -90,7 +108,7 @@ const TransactionManagement = () => {
                     </td>
                     <td>{transaction?.status}</td>
                     <td>
-                      {transaction.status === "pending" ? (
+                      {transaction.status === "pending" && transaction.type === "cash-out" ? (
                         <button
                           onClick={() => approveCashOut(transaction._id)}
                           className="btn btn-outline"
@@ -98,7 +116,12 @@ const TransactionManagement = () => {
                           Approve
                         </button>
                       ) : (
-                        <p>No Action need</p>
+                        <button
+                          onClick={() => approveCashIn(transaction._id)}
+                          className="btn btn-outline"
+                        >
+                          Approve
+                        </button>
                       )}
                     </td>
                   </tr>
