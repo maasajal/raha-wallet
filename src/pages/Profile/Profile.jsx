@@ -23,13 +23,13 @@ const Profile = () => {
 
   return (
     <div className="my-10 shadow-xl">
-      <div className="card image-full min-h-screen z-0">
+      <div className="card image-full z-0">
         <figure>
-          <img src={rahaWalletLogo} alt="raha wallet" />
+          <img src={rahaWalletLogo} alt="raha wallet" className="py-10" />
         </figure>
         <div className="card-body items-center justify-center text-white">
-          <h2 className="card-title text-2xl font-bold">{user?.name}</h2>
-          <div className="my-4">
+          <h2 className="card-title text-5xl font-bold">{user?.name}</h2>
+          <div className="my-4 flex justify-between gap-20">
             <p className="text-lg">
               <span className="font-semibold">Role:</span> {user?.role}
             </p>
@@ -38,7 +38,7 @@ const Profile = () => {
               {user?.status}
             </p>
           </div>
-          <div className="my-4">
+          <div className="my-4 space-y-5">
             <p className="text-lg">
               <span className="font-semibold">Email:</span> {user?.email}
             </p>

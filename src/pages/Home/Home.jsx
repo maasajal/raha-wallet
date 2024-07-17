@@ -45,6 +45,7 @@ const Home = () => {
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {navLinks.map((nav) => (
           <NavLink
+            key={nav.path}
             to={nav.path}
             className="bg-[#312062] text-white p-10 rounded-full w-full flex items-center justify-center gap-5"
           >

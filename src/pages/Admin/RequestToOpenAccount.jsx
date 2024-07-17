@@ -37,6 +37,9 @@ const RequestToOpenAccount = () => {
 
   return (
     <div>
+      <div className="text-center py-10">
+        <h2 className="text-3xl md:text-5xl font-bold font-Montserrat">Manage Account Open Request</h2>
+      </div>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>

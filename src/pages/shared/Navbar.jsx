@@ -19,20 +19,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const pages = [
   {
-    title: "Send Money",
-    path: "send-money",
+    title: "Home",
+    path: "/",
   },
   {
-    title: "Cash Out",
-    path: "cash-out",
-  },
-  {
-    title: "Cash In",
-    path: "cash-in",
-  },
-  {
-    title: "Account Open",
-    path: "/admin/account-open",
+    title: "Transactions",
+    path: "/transactions",
   },
 ];
 const Navbar = () => {
@@ -62,7 +54,7 @@ const Navbar = () => {
     await logOut();
     navigate("/login");
   };
-  const bgColor = "#653664"
+  const bgColor = "#653664";
   return (
     <AppBar position="static" color="">
       <Container maxWidth="xl">
@@ -74,48 +66,13 @@ const Navbar = () => {
               alt="Raha Wallet logo"
             />
           </NavLink>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            {/* <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.path}>
-                  <NavLink to={page.path}>{page.title}</NavLink>
-                </MenuItem>
-              ))}
-            </Menu> */}
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* {pages.map((page) => (
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
+            {pages.map((page) => (
               <MenuItem key={page.path}>
                 <NavLink to={page.path}>{page.title}</NavLink>
               </MenuItem>
-            ))} */}
+            ))}
           </Box>
           {user ? (
             <div className="flex gap-5 items-center">
@@ -142,17 +99,14 @@ const Navbar = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem key="1" onClick={handleCloseUserMenu}>
-                    <NavLink to={"/profile"}>Profile</NavLink>
-                  </MenuItem>
-                  <MenuItem key="2" onClick={handleCloseUserMenu}>
-                    <NavLink to={"/transactions"}>Transactions</NavLink>
-                  </MenuItem>
-                  <MenuItem key="accountRequest" onClick={handleCloseUserMenu}>
-                    <NavLink to={"/admin/account-open"}>
+                  <NavLink key="profile" to={"/profile"}>
+                    <MenuItem onClick={handleCloseNavMenu}>Profile</MenuItem>
+                  </NavLink>
+                  <NavLink key="accountRequest" to={"/admin/account-open"}>
+                    <MenuItem onClick={handleCloseNavMenu}>
                       Account Request
-                    </NavLink>
-                  </MenuItem>
+                    </MenuItem>
+                  </NavLink>
                   <MenuItem key="logout" onClick={handleLogout}>
                     Logout
                   </MenuItem>

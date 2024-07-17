@@ -27,15 +27,17 @@ const SignUp = () => {
   } = useForm({
     defaultValues: {
       role: "user",
-      status: "reviewing",
     },
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const res = await signUp(data);
-      navigate("/");
+      if (res.status === "pending") {
+        console.log("Account open request send to Admin!");
+        reset();
+        navigate("/login");
+      }
     } catch (error) {
       console.error("Error posting signup data", error);
     }
