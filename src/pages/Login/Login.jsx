@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const { logIn } = useAuth();
-  const navigete = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +16,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const res = await logIn(data);
-      navigete("/");
+      navigate("/");
     } catch (error) {
       console.log("error login", error);
     }

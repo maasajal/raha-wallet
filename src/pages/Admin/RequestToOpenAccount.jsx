@@ -17,7 +17,7 @@ const RequestToOpenAccount = () => {
   const handleAccept = async (account) => {
     try {
       // Change the user status
-      await axiosSecure.patch(`/account-approve/${account.email}`)
+      await axiosSecure.patch(`/account-approve/${account.email}`);
       refetch();
     } catch (error) {
       console.log("error", error);
@@ -25,7 +25,11 @@ const RequestToOpenAccount = () => {
   };
   const handleDelete = async (account) => {
     try {
-
+      const res = await axiosSecure.delete(`/account-delete/${account._id}`);
+      if (res.data.deletedCount > 0) {
+        console.log("Account delete successfully!");
+        refetch();
+      }
     } catch (error) {
       console.log("error", error);
     }
