@@ -62,9 +62,9 @@ const Navbar = () => {
     await logOut();
     navigate("/login");
   };
-
+  const bgColor = "#653664"
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <NavLink to="/">
@@ -75,7 +75,7 @@ const Navbar = () => {
             />
           </NavLink>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -108,14 +108,14 @@ const Navbar = () => {
                   <NavLink to={page.path}>{page.title}</NavLink>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
               <MenuItem key={page.path}>
                 <NavLink to={page.path}>{page.title}</NavLink>
               </MenuItem>
-            ))}
+            ))} */}
           </Box>
           {user ? (
             <div className="flex gap-5 items-center">
@@ -123,10 +123,7 @@ const Navbar = () => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
+                    <Avatar alt="Remy Sharp" src="../../assets/fevicon.png" />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -151,12 +148,12 @@ const Navbar = () => {
                   <MenuItem key="2" onClick={handleCloseUserMenu}>
                     <NavLink to={"/transactions"}>Transactions</NavLink>
                   </MenuItem>
-                  <MenuItem key="4" onClick={handleCloseUserMenu}>
-                    <NavLink to={"/transaction-management"}>
-                      Trans Manage
+                  <MenuItem key="accountRequest" onClick={handleCloseUserMenu}>
+                    <NavLink to={"/admin/account-open"}>
+                      Account Request
                     </NavLink>
                   </MenuItem>
-                  <MenuItem key="3" onClick={handleLogout}>
+                  <MenuItem key="logout" onClick={handleLogout}>
                     Logout
                   </MenuItem>
                 </Menu>

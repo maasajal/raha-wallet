@@ -23,7 +23,7 @@ const Profile = () => {
 
   return (
     <div className="my-10 shadow-xl">
-      <div className="card image-full min-h-screen">
+      <div className="card image-full min-h-screen z-0">
         <figure>
           <img src={rahaWalletLogo} alt="raha wallet" />
         </figure>

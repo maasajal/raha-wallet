@@ -13,6 +13,8 @@ import TransactionHistory from "../pages/shared/TransactionHistory/TransactionHi
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
+import UserRoute from "./UserRoute";
+import MobileLayout from "../layouts/MobileNavbar";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +22,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -48,15 +54,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/send-money",
-        element: <SendMoney />,
+        element: (
+          <UserRoute>
+            <SendMoney />
+          </UserRoute>
+        ),
       },
       {
         path: "/cash-out",
-        element: <CashOut />,
+        element: (
+          <UserRoute>
+            <CashOut />
+          </UserRoute>
+        ),
       },
       {
         path: "/cash-in",
-        element: <CashIn />,
+        element: (
+          <UserRoute>
+            <CashIn />,
+          </UserRoute>
+        ),
       },
       {
         path: "/transaction-management",
@@ -76,5 +94,19 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: "/",
+  //   element: <MobileLayout />,
+  //   children: [
+  //     {
+  //       path: "/",
+  //       element: (
+  //         <PrivateRoute>
+  //           <Home />
+  //         </PrivateRoute>
+  //       ),
+  //     },
+  //   ],
+  // },
 ]);
 export default router;
