@@ -17,6 +17,7 @@ const RequestToOpenAccount = () => {
   const handleAccept = async (account) => {
     try {
       // Change the user status
+      await axiosSecure.patch(`/account-approve/${account.email}`)
       refetch();
     } catch (error) {
       console.log("error", error);
@@ -24,7 +25,7 @@ const RequestToOpenAccount = () => {
   };
   const handleDelete = async (account) => {
     try {
-      
+
     } catch (error) {
       console.log("error", error);
     }
