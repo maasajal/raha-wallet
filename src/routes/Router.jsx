@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
+import RequestToOpenAccount from "../pages/Admin/RequestToOpenAccount";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "/admin/account-open",
+        element: <RequestToOpenAccount />,
       },
     ],
   },

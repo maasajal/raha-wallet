@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import useAuth from "../../hooks/useAuth";
 
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const pages = [
   {
@@ -30,10 +30,16 @@ const pages = [
     title: "Cash In",
     path: "cash-in",
   },
+  {
+    title: "Account Open",
+    path: "/admin/account-open",
+  },
 ];
 const Navbar = () => {
   const { user, logOut } = useAuth();
   //   console.log(user);
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -50,6 +56,11 @@ const Navbar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = async () => {
+    await logOut();
+    navigate("/");
   };
 
   return (
@@ -140,7 +151,7 @@ const Navbar = () => {
                   <MenuItem key="2" onClick={handleCloseUserMenu}>
                     <NavLink to={"/transactions"}>Transactions</NavLink>
                   </MenuItem>
-                  <MenuItem key="3" onClick={logOut}>
+                  <MenuItem key="3" onClick={handleLogout}>
                     Logout
                   </MenuItem>
                 </Menu>
