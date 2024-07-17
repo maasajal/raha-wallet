@@ -5,7 +5,9 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import RequestToOpenAccount from "../pages/Admin/RequestToOpenAccount";
-import SendMoney from "../pages/User/SendMoney";
+import SendMoney from "../pages/Users/SendMoney/SendMoney";
+import CashOut from "../pages/Users/CashOut/CashOut";
+import TransactionManagement from "../pages/Agents/TransactionManagement/TransactionManagement";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "/send-money",
         element: <SendMoney />,
+      },
+      {
+        path: "/cash-out",
+        element: <CashOut />,
+      },
+      {
+        path: "/transaction-management",
+        element: <TransactionManagement />,
       },
     ],
   },

@@ -151,6 +151,11 @@ const Navbar = () => {
                   <MenuItem key="2" onClick={handleCloseUserMenu}>
                     <NavLink to={"/transactions"}>Transactions</NavLink>
                   </MenuItem>
+                  <MenuItem key="4" onClick={handleCloseUserMenu}>
+                    <NavLink to={"/transaction-management"}>
+                      Trans Manage
+                    </NavLink>
+                  </MenuItem>
                   <MenuItem key="3" onClick={handleLogout}>
                     Logout
                   </MenuItem>

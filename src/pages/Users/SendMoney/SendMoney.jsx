@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Box, TextField, Button, Typography, Alert } from "@mui/material";
-import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const SendMoney = () => {
   const { token } = useAuth(); // Assuming useAuth hook provides the token
@@ -64,7 +64,9 @@ const SendMoney = () => {
               required: "Recipient mobile number is required",
             })}
             error={!!errors.recipientMobile}
-            helperText={errors.recipientMobile && errors.recipientMobile.message}
+            helperText={
+              errors.recipientMobile && errors.recipientMobile.message
+            }
           />
 
           <TextField
