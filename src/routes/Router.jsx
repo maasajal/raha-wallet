@@ -5,6 +5,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import RequestToOpenAccount from "../pages/Admin/RequestToOpenAccount";
+import SendMoney from "../pages/User/SendMoney";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/account-open",
         element: <RequestToOpenAccount />,
+      },
+      {
+        path: "/send-money",
+        element: <SendMoney />,
       },
     ],
   },

@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const logIn = async (data) => {
-    console.log("Login", data);
     try {
       const res = await axiosPublic.post("/login", data);
       if (res.data.token) {
