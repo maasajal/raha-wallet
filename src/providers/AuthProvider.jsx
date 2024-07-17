@@ -1,7 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

@@ -99,7 +99,7 @@ const CashOut = () => {
             helperText={errors.pin && errors.pin.message}
           />
           <Button type="submit" variant="outlined" color="info">
-            Cash Out
+            Cash Out Request
           </Button>
         </Box>
       </div>

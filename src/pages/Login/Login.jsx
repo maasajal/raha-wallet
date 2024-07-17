@@ -70,7 +70,12 @@ const Login = () => {
             error={!!errors.pin}
             helperText={errors.pin && errors.pin.message}
           />
-          <Button type="submit" variant="outlined" color="info">
+          <Button
+            type="submit"
+            variant="contained"
+            color="info"
+            sx={{ m: 1, width: "25ch" }}
+          >
             Login
           </Button>
         </Box>

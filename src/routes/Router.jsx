@@ -10,6 +10,8 @@ import CashOut from "../pages/Users/CashOut/CashOut";
 import TransactionManagement from "../pages/Agents/TransactionManagement/TransactionManagement";
 import CashIn from "../pages/Users/CashIn/CashIn";
 import TransactionHistory from "../pages/shared/TransactionHistory/TransactionHistory";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,20 +22,28 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "sign-up",
+        path: "/sign-up",
         element: <SignUp />,
       },
       {
-        path: "profile",
-        element: <Profile />,
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin/account-open",
-        element: <RequestToOpenAccount />,
+        element: (
+          <AdminRoute>
+            <RequestToOpenAccount />
+          </AdminRoute>
+        ),
       },
       {
         path: "/send-money",
@@ -53,7 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/transactions",
-        element: <TransactionHistory />,
+        element: (
+          <PrivateRoute>
+            <TransactionHistory />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -12,7 +12,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const TransactionHistory = () => {
-  const { token } = useAuth();
+  const { user, token } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const {
@@ -27,6 +27,7 @@ const TransactionHistory = () => {
       });
       return res.data;
     },
+    enabled: !!user,
   });
 
   if (isLoading) return <Typography>Loading...</Typography>;

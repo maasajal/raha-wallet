@@ -26,6 +26,7 @@ const SignUp = () => {
     reset,
   } = useForm({
     defaultValues: {
+      role: "user",
       status: "reviewing",
     },
   });
@@ -119,7 +120,7 @@ const SignUp = () => {
             required
             id="standard-number"
             label="5 Digit PIN"
-            type="number"
+            type="password"
             InputLabelProps={{
               shrink: true,
             }}
