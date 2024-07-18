@@ -14,11 +14,12 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
 import UserRoute from "./UserRoute";
-import MobileLayout from "../layouts/MobileNavbar";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -94,19 +95,5 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <MobileLayout />,
-  //   children: [
-  //     {
-  //       path: "/",
-  //       element: (
-  //         <PrivateRoute>
-  //           <Home />
-  //         </PrivateRoute>
-  //       ),
-  //     },
-  //   ],
-  // },
 ]);
 export default router;

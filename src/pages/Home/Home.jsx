@@ -3,10 +3,18 @@ import React from "react";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import SendIcon from "@mui/icons-material/Send";
 import SavingsIcon from "@mui/icons-material/Savings";
+import PeopleIcon from "@mui/icons-material/People";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
+
 import { NavLink } from "react-router-dom";
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
+import useAgent from "../../hooks/useAgent";
+import useUser from "../../hooks/useUser";
+import useAdmin from "../../hooks/useAdmin";
 
-const navLinks = [
+const userNav = [
   {
     icon: <SendIcon />,
     title: "Send Money",
@@ -23,13 +31,49 @@ const navLinks = [
     path: "/cash-in",
   },
   {
-    icon: <SavingsIcon />,
+    icon: <ListAltIcon />,
+    title: "My Transactions",
+    path: "/transactions",
+  },
+];
+const agentNav = [
+  {
+    icon: <PointOfSaleIcon />,
     title: "Transaction Management",
     path: "/transaction-management",
   },
+  {
+    icon: <ListAltIcon />,
+    title: "My Transactions",
+    path: "/transactions",
+  },
+  {
+    icon: <SavingsIcon />,
+    title: "Request to Cash In",
+    path: "/agent-cash-in",
+  },
 ];
-
+const adminNav = [
+  {
+    icon: <PeopleIcon />,
+    title: "All Accounts",
+    path: "/admin/account-open",
+  },
+  {
+    icon: <ManageAccountsIcon />,
+    title: "Account Open Request",
+    path: "/admin/account-open",
+  },
+  {
+    icon: <ListAltIcon />,
+    title: "All Transactions",
+    path: "/transactions",
+  },
+];
 const Home = () => {
+  const [isAgent] = useAgent();
+  const [isUser] = useUser();
+  const [isAdmin] = useAdmin();
   return (
     <div className="text-center space-y-5">
       <div>
@@ -43,15 +87,45 @@ const Home = () => {
         </h1>
       </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {navLinks.map((nav) => (
-          <NavLink
-            key={nav.path}
-            to={nav.path}
-            className="bg-[#312062] text-white p-10 rounded-full w-full flex items-center justify-center gap-5"
-          >
-            <p>{nav.icon}</p> <p>{nav.title}</p>
-          </NavLink>
-        ))}
+        {isUser && (
+          <>
+            {userNav.map((nav) => (
+              <NavLink
+                key={nav.path}
+                to={nav.path}
+                className="bg-[#312062] text-white p-10 rounded-full w-full flex items-center justify-center gap-5"
+              >
+                <p>{nav.icon}</p> <p>{nav.title}</p>
+              </NavLink>
+            ))}
+          </>
+        )}
+        {isAgent && (
+          <>
+            {agentNav.map((nav) => (
+              <NavLink
+                key={nav.path}
+                to={nav.path}
+                className="bg-[#312062] text-white p-10 rounded-full w-full flex items-center justify-center gap-5"
+              >
+                <p>{nav.icon}</p> <p>{nav.title}</p>
+              </NavLink>
+            ))}
+          </>
+        )}
+        {isAdmin && (
+          <>
+            {adminNav.map((nav) => (
+              <NavLink
+                key={nav.path}
+                to={nav.path}
+                className="bg-[#312062] text-white p-10 rounded-full w-full flex items-center justify-center gap-5"
+              >
+                <p>{nav.icon}</p> <p>{nav.title}</p>
+              </NavLink>
+            ))}
+          </>
+        )}
       </section>
     </div>
   );

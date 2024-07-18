@@ -17,21 +17,12 @@ import useAuth from "../../hooks/useAuth";
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
 import userPic from "../../assets/fevicon.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 
-const pages = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "Transactions",
-    path: "/transactions",
-  },
-];
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  //   console.log(user);
   const navigate = useNavigate();
+  const [isAdmin] = useAdmin();
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -55,7 +46,6 @@ const Navbar = () => {
     await logOut();
     navigate("/login");
   };
-  const bgColor = "#653664";
   return (
     <AppBar position="static" color="">
       <Container maxWidth="xl">
@@ -63,21 +53,33 @@ const Navbar = () => {
           <NavLink to="/">
             <img
               src={rahaWalletLogo}
-              className="logo mx-auto w-28 sm:w-30 mt-5 py-2"
+              className="logo mx-auto max-w-32 mt-5 py-2"
               alt="Raha Wallet logo"
             />
           </NavLink>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}></Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
-            {pages.map((page) => (
-              <MenuItem key={page.path}>
-                <NavLink to={page.path}>{page.title}</NavLink>
-              </MenuItem>
-            ))}
+            <div className="flex items-center mx-10">
+              <NavLink key="home" to={"/"}>
+                <MenuItem onClick={handleCloseNavMenu}>Home</MenuItem>
+              </NavLink>
+              <marquee className="mx-5">
+                Welcome to the Raha Wallet a Mobile Finance Service (MFS)! This
+                project is designed to provide a user-friendly interface for
+                managing transactions such as send-money, cash-in and cash-out
+                requests, primarily targeting agents and users. So, the project
+                features robust secure authentication, real-time updates, and a
+                seamless user experience.
+              </marquee>
+            </div>
           </Box>
           {user ? (
             <div className="flex gap-5 items-center">
-              {user && <span className="mr-2">{user.name}</span>}
+              {user && (
+                <span className="mr-2 font-bold font-Montserrat">
+                  {user.name}
+                </span>
+              )}
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -102,11 +104,6 @@ const Navbar = () => {
                 >
                   <NavLink key="profile" to={"/profile"}>
                     <MenuItem onClick={handleCloseNavMenu}>Profile</MenuItem>
-                  </NavLink>
-                  <NavLink key="accountRequest" to={"/admin/account-open"}>
-                    <MenuItem onClick={handleCloseNavMenu}>
-                      Account Request
-                    </MenuItem>
                   </NavLink>
                   <MenuItem key="logout" onClick={handleLogout}>
                     Logout
