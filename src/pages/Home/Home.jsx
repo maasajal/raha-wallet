@@ -57,7 +57,7 @@ const adminNav = [
   {
     icon: <PeopleIcon />,
     title: "All Accounts",
-    path: "/admin/account-open",
+    path: "/all-account",
   },
   {
     icon: <ManageAccountsIcon />,
@@ -75,7 +75,7 @@ const Home = () => {
   const [isUser] = useUser();
   const [isAdmin] = useAdmin();
   return (
-    <div className="text-center space-y-5">
+    <div className="text-center space-y-5 sm:min-h-screen">
       <div>
         <img
           src={rahaWalletLogo}

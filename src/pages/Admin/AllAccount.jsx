@@ -2,28 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const RequestToOpenAccount = () => {
+const AllAccount = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: accountOpen = [], refetch } = useQuery({
-    queryKey: ["account-open"],
+  const { data: allAccount = [], refetch } = useQuery({
+    queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/account-open", {
-        params: { status: "pending" },
-      });
+      const res = await axiosSecure.get("/users");
       return res.data;
     },
   });
 
-  const handleAccept = async (account) => {
-    try {
-      // Change the user status
-      await axiosSecure.patch(`/account-approve/${account.email}`);
-      refetch();
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
   const handleDelete = async (account) => {
     try {
       Swal.fire({
@@ -64,43 +53,37 @@ const RequestToOpenAccount = () => {
   return (
     <div>
       <div className="text-center py-10">
-        <h2 className="text-3xl md:text-5xl font-bold font-Montserrat">Manage Account Open Request</h2>
+        <h2 className="text-3xl md:text-5xl font-bold font-Montserrat">
+          All Account
+        </h2>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
             <tr>
               <th></th>
-              <th>User Name</th>
+              <th>User Name & Role</th>
               <th>Email & Mobile No.</th>
-              <th>Role</th>
-              <th>Open</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {accountOpen.length > 0 ? (
+            {allAccount.length > 0 ? (
               <>
-                {accountOpen.map((account, index) => (
+                {allAccount.map((account, index) => (
                   <tr key={account._id} className="hover">
                     <th>{index + 1}</th>
                     <td>
-                      <div className="font-bold">{account.name}</div>
+                      <div className="font-bold">{account.name}</div> <br />
+                      <div>Role: {account.role}</div>
                     </td>
                     <td>
                       {account.email}
                       <br />
                       {account.mobile}
                     </td>
-                    <td>{account.role.toUpperCase()}</td>
-                    <td>
-                      <button
-                        onClick={() => handleAccept(account)}
-                        className="btn btn-outline"
-                      >
-                        Accept
-                      </button>
-                    </td>
+                    <td>{account.status.toUpperCase()}</td>
                     <td>
                       <button
                         onClick={() => handleDelete(account)}
@@ -123,4 +106,4 @@ const RequestToOpenAccount = () => {
     </div>
   );
 };
-export default RequestToOpenAccount;
+export default AllAccount;

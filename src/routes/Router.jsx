@@ -15,6 +15,7 @@ import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
 import UserRoute from "./UserRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AllAccount from "../pages/Admin/AllAccount";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Profile />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "/all-account",
+        element: (
+          <AdminRoute>
+            <AllAccount />
+          </AdminRoute>
         ),
       },
       {
