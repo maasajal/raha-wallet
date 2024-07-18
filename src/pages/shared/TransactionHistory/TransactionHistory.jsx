@@ -3,10 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import {
   Box,
   Typography,
-  Paper,
-  List,
-  ListItem,
-  ListItemText,
 } from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -38,24 +34,52 @@ const TransactionHistory = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         Transaction History
       </Typography>
-      {transactions.length > 0 ? (
-        <Paper elevation={3} sx={{ maxHeight: 400, overflow: "auto" }}>
-          <List>
-            {transactions.map((transaction) => (
-              <ListItem key={transaction._id}>
-                <ListItemText
-                  primary={`${transaction.type} - Taka ${transaction.amount}`}
-                  secondary={`Date: ${new Date(
-                    transaction.date
-                  ).toLocaleString()} - Status: ${transaction.status}`}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Paper>
-      ) : (
-        <Typography>No transactions found</Typography>
-      )}
+
+      <div className="overflow-x-auto">
+        <table className="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>User ID and Agent ID</th>
+              <th>Transaction ID</th>
+              <th>Type: Amount</th>
+              <th>Request & Approve Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.length > 0 ? (
+              <>
+                {transactions.map((transaction, index) => (
+                  <tr key={transaction?._id} className="hover">
+                    <th>{index + 1}</th>
+                    <td>
+                      <div className="font-bold">{transaction?.user}</div>
+                      <div className="font-bold">{transaction?.agent}</div>
+                    </td>
+                    <td>
+                      <div className="font-bold">{transaction?._id}</div>
+                    </td>
+                    <td>
+                      {transaction?.type}: {transaction?.amount}
+                    </td>
+                    <td>
+                      {transaction?.date}
+                      <br />
+                      {transaction?.approvedAt}
+                    </td>
+                    <td>{transaction?.status}</td>
+                  </tr>
+                ))}
+              </>
+            ) : (
+              <tr>
+                <td className="text-center">No transaction? Request found!</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </Box>
   );
 };
