@@ -54,8 +54,8 @@ const TransactionHistory = () => {
                   <tr key={transaction?._id} className="hover">
                     <th>{index + 1}</th>
                     <td>
-                      <div className="font-bold">{transaction?.user}</div>
-                      <div className="font-bold">{transaction?.agent}</div>
+                      <div className="font-bold">{transaction?.user || transaction?.sender}</div>
+                      <div className="font-bold">{transaction?.agent || transaction?.recipient}</div>
                     </td>
                     <td>
                       <div className="font-bold">{transaction?._id}</div>
