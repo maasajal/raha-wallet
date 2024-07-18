@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import useAuth from "../../hooks/useAuth";
 
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
+import userPic from "../../assets/fevicon.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const pages = [
@@ -80,7 +81,7 @@ const Navbar = () => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="../../assets/fevicon.png" />
+                    <Avatar alt="Remy Sharp" src={userPic} />
                   </IconButton>
                 </Tooltip>
                 <Menu
