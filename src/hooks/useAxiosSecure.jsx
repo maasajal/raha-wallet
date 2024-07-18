@@ -5,9 +5,6 @@ import useAuth from "./useAuth";
 const axiosSecure = axios.create({
   // baseURL: import.meta.env.VITE_SERVER,
   baseURL: import.meta.env.VITE_LOCAL_SERVER || "https://raha-wallet-server.vercel.app",
-  headers: {
-    "Content-Type": "application/json",
-  },
   withCredentials: true,
 });
 const useAxiosSecure = () => {
