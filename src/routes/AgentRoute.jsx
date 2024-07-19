@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../providers/AuthProvider";
+// import { useAuth } from "../providers/AuthProvider";
 import useAgent from "../hooks/useAgent";
+import useAuth from "../hooks/useAuth";
 
 const AgentRoute = ({ children }) => {
   const { user, loading } = useAuth();

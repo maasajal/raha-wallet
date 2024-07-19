@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+// export const useAuth = () => {
+//   return useContext(AuthContext);
+// };
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -19,7 +18,7 @@ const AuthProvider = ({ children }) => {
       if (res.data.status === "pending") {
         console.log("Please wait for admin approval the account!");
       }
-      // setUser(res.data);
+      setUser(res.data);
       return res.data;
     } catch (error) {
       console.error("Error signing up:", error);
