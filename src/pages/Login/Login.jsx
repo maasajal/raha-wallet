@@ -16,6 +16,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const res = await logIn(data);
+      console.log("Login s",res)
       navigate("/");
     } catch (error) {
       console.log("error login", error);
