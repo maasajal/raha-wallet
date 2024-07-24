@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build" # or "ng build --prod", etc.
+  publish = "dist" # or "build", depending on your project setup
+
+[[redirects]]
+  from = "/foo"
+  to = "/bar"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/new-about"
+  status = 302
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
