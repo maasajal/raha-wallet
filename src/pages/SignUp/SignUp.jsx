@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import rahaWalletLogo from "../../assets/rahaWalletLogo.png";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUp } = useAuth();
@@ -34,7 +35,11 @@ const SignUp = () => {
     try {
       const res = await signUp(data);
       if (res.status === "pending") {
-        console.log("Account open request send to Admin!");
+        Swal.fire({
+          title: "Register Successfully!",
+          text: "Please wait for admin approval. You will get email when your account active.",
+          icon: "success",
+        });
         reset();
         navigate("/login");
       }
