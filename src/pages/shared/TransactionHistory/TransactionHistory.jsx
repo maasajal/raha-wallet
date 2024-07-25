@@ -40,7 +40,11 @@ const TransactionHistory = () => {
           <thead>
             <tr>
               <th></th>
-              <th>User ID and Agent ID</th>
+              <th>
+                User ID & Agent ID or
+                <br />
+                Sender ID & Recipient ID
+              </th>
               <th>Transaction ID</th>
               <th>Type: Amount</th>
               <th>Request & Approve Date</th>
