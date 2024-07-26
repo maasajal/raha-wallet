@@ -34,16 +34,16 @@ const Login = () => {
           Login to Raha Wallet!
         </h1>
       </div>
-      <div className="my-10">
+      <div className="my-10 max-w-xl mx-auto">
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            "& .MuiTextField-root": { width: "100%" },
           }}
           noValidate
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
-          className=""
+          className="space-y-5 p-10 bg-[#faf5ee] rounded-xl"
         >
           <TextField
             required
@@ -74,7 +74,7 @@ const Login = () => {
             type="submit"
             variant="contained"
             color="info"
-            sx={{ m: 1, width: "25ch" }}
+            sx={{ width: "20ch" }}
           >
             Login
           </Button>

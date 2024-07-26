@@ -65,15 +65,16 @@ const SignUp = () => {
           Sign Up to Raha Wallet!
         </h1>
       </div>
-      <div className="my-10">
+      <div className="my-10 max-w-xl mx-auto">
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            "& .MuiTextField-root": { width: "100%" },
           }}
           noValidate
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
+          className="space-y-5 p-10 bg-[#faf5ee] rounded-xl"
         >
           <TextField
             required
@@ -148,10 +149,10 @@ const SignUp = () => {
           />
           <FormControl
             variant="standard"
-            sx={{ m: 1, width: "25ch" }}
+            sx={{ width: "100%" }}
             error={!!errors.role}
           >
-            <InputLabel id="demo-simple-select-label">Sign Up As</InputLabel>
+            <InputLabel id="demo-simple-select-label">Sign Up As User or Agent</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -171,7 +172,7 @@ const SignUp = () => {
             type="submit"
             variant="contained"
             color="primary"
-            sx={{ m: 1, width: "25ch" }}
+            sx={{ width: "20ch" }}
           >
             Sign Up
           </Button>

@@ -48,15 +48,16 @@ const CashIn = () => {
         </Typography>
         {message && <Alert severity="info">{message}</Alert>}
       </div>
-      <div className="my-10">
+      <div className="my-10 max-w-xl mx-auto">
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            "& .MuiTextField-root": { width: "100%" },
           }}
           noValidate
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
+          className="space-y-5 p-10 bg-[#faf5ee] rounded-xl"
         >
           <TextField
             required
@@ -99,7 +100,7 @@ const CashIn = () => {
             helperText={errors.pin && errors.pin.message}
           />
           <Button type="submit" variant="outlined" color="info">
-            Cash In Request
+            Send Cash In Request
           </Button>
         </Box>
       </div>

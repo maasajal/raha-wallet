@@ -43,15 +43,16 @@ const SendMoney = () => {
         </Typography>
         {message && <Alert severity="info">{message}</Alert>}
       </div>
-      <div className="my-10">
+      <div className="my-10 max-w-xl mx-auto">
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            "& .MuiTextField-root": { width: "100%" },
           }}
           noValidate
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
+          className="space-y-5 p-10 bg-[#faf5ee] rounded-xl"
         >
           <TextField
             required
